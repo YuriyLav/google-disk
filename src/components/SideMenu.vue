@@ -40,9 +40,11 @@ export default {
 <style>
 .side-menu{
     width: 250px;
-    height: 100vh;
-    background-color: #F5F5F5;
+    height: 100%;
     padding: 10px 0px 0px 20px;
+    position: fixed;
+    top: 0; /* Stay at the top */
+    left: 0;
 }
 
 .create-btn{
@@ -72,12 +74,15 @@ export default {
 
 .img{
     margin-right: 10px;
+    cursor: pointer;
+    cursor: pointer;
 }
 
 .title{
     font-size: 22px;
     font-weight: bold;
     color: #404040;
+    cursor: pointer;
 }
 
 progress {
@@ -117,5 +122,10 @@ progress::-webkit-progress-value {
     font-weight: bold;
     border-radius: 20px;
     border: 1px solid black;
+    background-color: #F5F5F5;
+}
+
+.buy-more:hover{
+    background-color: #E8E8E8;
 }
 </style>

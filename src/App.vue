@@ -1,19 +1,14 @@
 <template>
-    <div class="app">
-        <SideMenu></SideMenu>
+    <div>
+        <router-view></router-view>
     </div>
 </template>
-
 <script>
-import SideMenu from './components/SideMenu.vue';
-
 export default {
-    components: { SideMenu }
+    
 }
 </script>
-
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 * {
     margin: 0;
     padding: 0;
