@@ -1,5 +1,5 @@
 <template>
-    <div class="folder">
+    <div class="folder" @click="$router.push({path: '/folder/'+folder.id })">
         <div class="folder-img">
             <img class="img" src="@/assets/folder-img.png" alt="">
         </div>
@@ -57,6 +57,5 @@ export default {
 
 .folder-title{
     font-size: 14px;
-    font-weight: bold;
 }    
 </style>

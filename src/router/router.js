@@ -1,7 +1,8 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import Authorization from "@/pages/Authorization"
 import Disk from "@/pages/Disk"
-import About from "@/pages/About"
+import AboutFile from "@/pages/AboutFile"
+import AboutFolder from "@/pages/AboutFolder"
 const routes = [
     {
         path: '/',
@@ -12,8 +13,12 @@ const routes = [
         component: Disk
     },
     {
-        path: '/about/:id',
-        component: About
+        path: '/about_file/:id',
+        component: AboutFile
+    },
+    {
+        path: '/folder/:id',
+        component: AboutFolder
     },
 ]
 

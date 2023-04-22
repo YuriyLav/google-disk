@@ -1,20 +1,17 @@
 <template>
-    <div class="file" @click="$router.push('/about_file/'+file.id)">
-        <div class="file-title">
-            {{ file.title }}
-        </div>
-        <div class="file-img">
-            <img class="img" src="@/assets/pdf-img.png" alt="">
-        </div>
+    <div class="files">
+        <File v-for="file in files" v-bind:file="file"></File>
     </div>
 </template>
 
 <script>
+import File from '@/components/File.vue';
+import { jsonFile } from '../assets/files.js';
 export default {
-    props: {
-        file: {
-            type: Object,
-            required: true,
+    components: { File },
+    data() {
+        return {
+            files: jsonFile.files
         }
     }
 }
@@ -35,6 +32,12 @@ export default {
     cursor: pointer;
 }
 
+.files{
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 20px;
+}
+
 .file:hover {
     background-color: #cdcdcdc4;
 }
@@ -45,7 +48,7 @@ export default {
 
 .file-title {
     font-size: 14px;
-
+    font-weight: bold;
 }
 
 </style>

@@ -4,9 +4,17 @@
             <img class="img" src="@/assets/logo.png" alt="">
             <div class="title">Диск</div>
         </div>
-        <button class="create-btn"><b style="font-size: 35px; margin-right: 15px;">+</b>Создать</button>
-        <div class="menu">
-            <MenuItem v-for="menuItem in menuItems" v-bind:menuItem="menuItem"></MenuItem>
+        <button @click="showModal" class="create-btn"><b style="font-size: 35px; margin-right: 15px;">+</b>Создать</button>
+        <Create v-model:show=modelVisible></Create>
+        <div v-for="menuItem in menuItems">
+            <button class="menu-item-btn">
+                <div class="menu-item-img">
+                    <img src="@/assets/item.png" alt="">
+                </div>
+                <div class="menu-item-title">
+                    {{ menuItem.title }}
+                </div>
+            </button>
         </div>
         <div class="memory-load">
             <progress value="67" max="100"></progress>
@@ -17,43 +25,72 @@
 </template>
 
 <script>
-import MenuItem from './MenuItem.vue';
+import Create from './Create.vue';
+
 
 export default {
-    components: { MenuItem },
     data() {
         return {
             menuItems: [
-                {title: 'Мой диск'},
-                {title: 'Компьютеры'},
-                {title: 'Доступные мне'},
-                {title: 'Недавние'},
-                {title: 'Помеченные'},
-                {title: 'Корзина'},
-                {title: 'Хранилище'},
-            ]
+                { title: "Мой диск" },
+                { title: "Компьютеры" },
+                { title: "Доступные мне" },
+                { title: "Недавние" },
+                { title: "Помеченные" },
+                { title: "Корзина" },
+                { title: "Хранилище" },
+            ],
+            modelVisible: false
+        };
+    },
+    methods: {
+        showModal() {
+            this.modelVisible = true
         }
-    }
+    },
+    components: { Create }
 }
 </script>
 
-<style>
-.side-menu{
-    width: 250px;
-    height: 100%;
+<style scoped>
+.side-menu {
+    width: 15%;
+    height: 100vh;
     padding: 10px 0px 0px 20px;
-    position: fixed;
-    top: 0; /* Stay at the top */
-    left: 0;
 }
 
-.create-btn{
+.menu-item-btn {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 90%;
+    font-size: 14px;
+    margin-top: 5px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 5px 20px 5px 20px;
+    border-radius: 20px;
+}
+
+.menu-item-btn:hover{
+    background-color: #D0D0D0;
+}
+
+.menu-item-btn:focus{
+    background-color: #88ccff;
+}
+
+.menu-item-img{
+    margin-right: 12px;
+}
+
+.create-btn {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5); 
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5);
     font-size: 16px;
-    font-weight: bold;
     padding: 10px 15px;
     border-radius: 20px;
     border: none;
@@ -62,7 +99,7 @@ export default {
     margin: 20px 0px;
 }
 
-.create-btn:hover{
+.create-btn:hover {
     background-color: #F0F0F0;
 }
 
@@ -72,26 +109,26 @@ export default {
     padding-left: 10px;
 }
 
-.img{
+.img {
     margin-right: 10px;
     cursor: pointer;
     cursor: pointer;
 }
 
-.title{
+.title {
     font-size: 22px;
-    font-weight: bold;
+
     color: #404040;
     cursor: pointer;
 }
 
 progress {
-    background-color:gray;
+    background-color: gray;
     border-radius: 5px;
     border: 0;
     height: 5px;
     width: 180px;
-  }
+}
 
 progress::-webkit-progress-bar {
     background-color: gray;
@@ -103,16 +140,16 @@ progress::-webkit-progress-value {
     border-radius: 5px;
 }
 
-.memory-load{
+.memory-load {
     margin-left: 20px;
 }
 
-.load{
+.load {
     margin-top: 10px;
     font-size: 14px;
 }
 
-.buy-more{
+.buy-more {
     margin-top: 20px;
     margin-left: 10px;
     width: 85%;
@@ -125,7 +162,16 @@ progress::-webkit-progress-value {
     background-color: #F5F5F5;
 }
 
-.buy-more:hover{
+.buy-more:hover {
     background-color: #E8E8E8;
 }
+
+@media (max-width: 768px) { 
+    .side-menu
+    {
+        display: none;
+    }
+}
+
+
 </style>

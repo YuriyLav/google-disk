@@ -1,9 +1,9 @@
-export const json = {
+export const jsonRec = {
     "recomendedFiles": [
-      [{ "id": 1, "title": "Документация по Vue" },
+      { "id": 1, "title": "Документация по Vue" },
       { "id": 2, "title": "JavaScript для бэкенд "},
       { "id": 3, "title": "Python для начинающих" },
       { "id": 4, "title": "Язык запросов SQL" },
-      { "id": 5, "title": "Bootstrap документация" }],
+      { "id": 5, "title": "Bootstrap документация" },
     ]
   };
