@@ -5,7 +5,7 @@
             <div class="title">Диск</div>
         </div>
         <button @click="showModal" class="create-btn"><b style="font-size: 35px; margin-right: 15px;">+</b>Создать</button>
-        <Create v-model:show=modelVisible></Create>
+        <Create v-model:show=modalVisible></Create>
         <div v-for="menuItem in menuItems">
             <button class="menu-item-btn">
                 <div class="menu-item-img">
@@ -40,12 +40,12 @@ export default {
                 { title: "Корзина" },
                 { title: "Хранилище" },
             ],
-            modelVisible: false
+            modalVisible: false
         };
     },
     methods: {
         showModal() {
-            this.modelVisible = true
+            this.modalVisible = true
         }
     },
     components: { Create }

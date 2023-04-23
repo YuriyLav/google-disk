@@ -19,10 +19,8 @@
 </template>
 
 <script>
-import Profile from './Profile.vue';
 
 export default {
-    components: { Profile },
     data() {
         return {
             searchQuery: ""

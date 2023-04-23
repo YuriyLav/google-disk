@@ -44,6 +44,7 @@ export default {
     background-color: #F5F5F5;
     width: 85%;
     height: 98vh;
+    overflow: hidden;
 }
 
 
