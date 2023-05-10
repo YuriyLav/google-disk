@@ -1,4 +1,5 @@
 <template>
+                <button class="but" @click="load">Загрузить посты</button>
     <div  v-if="searchedRecomendedFiles.length>0 || searchedFolders.length>0 || searchedFiles.length>0" class="content-area">
             <div v-if="searchedRecomendedFiles.length>0" class="recomendations">
                 <div class="rec-title">
@@ -8,7 +9,6 @@
                     <File v-for="file in searchedRecomendedFiles" v-bind:file="file"></File>
                 </div>
             </div>
-
             <div class="fold"> 
                 <div class="fold-title">
                     Папки
@@ -36,6 +36,7 @@ import { jsonFold } from '../assets/folders.js';
 import { jsonFile } from '../assets/files.js';
 import File from './File.vue';
 import Folder from './Folder.vue';
+import axios from "axios";
 
 export default {
     components: { Folder, File },
@@ -48,7 +49,7 @@ export default {
     data() {
         return {
             recomendedFiles: jsonRec.recomendedFiles,
-            folders: jsonFold.folders,
+            folders: [],
             files: jsonFile.files
         }
     },
@@ -63,11 +64,22 @@ export default {
             return this.files.filter(file => file.title.includes(this.searchStr))
         }
     },
+    methods:{
+        async load() {
+            try {
+                const response = await axios.get('https://jsonplaceholder.typicode.com/posts?_limit=10')
+                this.folders = response.data
+            } catch (e){
+                alert(e)
+            }
+        }
+
+    }
+
 }
 </script>
 
 <style scoped>
-
 
 .content-area{
     background-color: white;
